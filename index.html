@@ -1,23 +1,282 @@
-<!doctype html>
 <html lang="en-US">
   <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/daisyui@4.12.10/dist/full.min.css"
+      rel="stylesheet"
+      type="text/css"
+    />
     <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Vollkorn:ital,wght@0,400..900;1,400..900&display=swap");
+    </style>
+    <style>
+      .font-vollkorn {
+        font-family: "Vollkorn", serif;
+        font-optical-sizing: auto;
+        font-weight: <weight>;
+        font-style: normal;
+      }
+
+      .letter {
+        display: flex;
+        flex-direction: column;
+        padding-left: 1em;
+        padding-right: 1em;
+        position: relative;
+        z-index: 1;
+      }
+
+      .letter__container {
+        display: flex;
+        flex-direction: column;
+        margin-inline: auto;
+        position: relative;
+        width: min(100%, 30em);
+      }
+
+      .letter__container article {
+        background: white;
+        border-radius: 0.1em;
+        box-shadow: 0 0 0 1px rgba(35, 28, 51, 0.02),
+          0 0.2em 1.6em -0.8em rgba(35, 28, 51, 0.1),
+          0 0.4em 2.4em -1.2em rgba(35, 28, 51, 0.2),
+          0 0.4em 0.8em -1.2em rgba(35, 28, 51, 0.3),
+          0 0.8em 1.2em -1.6em rgba(35, 28, 51, 0.4),
+          0 1.2em 1.6em -2em rgba(35, 28, 51, 0.5);
+        display: flex;
+        flex-direction: column;
+        font-size: 18px;
+        letter-spacing: -0.0125em;
+        line-height: 1.45;
+        position: relative;
+        padding: 1.75em 2em;
+        text-align: left;
+        z-index: 1;
+      }
+
+      .letter__container article > * + * {
+        margin-top: 1.4em;
+      }
+
+      .letter__container article ol {
+        list-style: decimal;
+        padding-left: 1.1em;
+      }
+
+      .letter__container article ol li + li {
+        margin-top: 0.725em;
+      }
+
+      .letter__signature {
+        --spacing: 2.2em;
+        align-items: center;
+        background: url(/assets/images/general/jf-signature.svg) left top/auto
+          3.3em no-repeat;
+        display: flex;
+        /* font-size: var(--font-size-small); */
+        gap: 0.5em;
+        letter-spacing: -0.0125em;
+        line-height: 1.4em;
+        padding-top: 4.3em;
+        position: relative;
+        width: 100%;
+      }
+
+      .letter__signature dl {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .letter__signature dl dt {
+        font-weight: 500;
+      }
+
+      .letter__signature dl dd {
+        font-style: italic;
+      }
+
+      .letter__signature--avatar:before {
+        background: url(/assets/images/general/jf-avatar.jpg) center
+          center/cover no-repeat;
+        border-radius: 100%;
+        content: "";
+        display: inline-flex;
+        height: 3em;
+        width: 3em;
+      }
+
+      .letter--apple-iap .letter__container:before,
+      .letter--apple-iap .letter__container:after,
+      .letter--apple-path .letter__container:before,
+      .letter--apple-path .letter__container:after,
+      .letter--everyone .letter__container:before,
+      .letter--everyone .letter__container:after {
+        background: white;
+        border-radius: 0.1em;
+        box-shadow: 0 0 0 1px rgba(35, 28, 51, 0.02),
+          0 0.4em 2.4em -1.2em rgba(35, 28, 51, 0.05),
+          0 1.6em 2em -2.4em rgba(35, 28, 51, 0.05);
+        content: "";
+        height: 100%;
+        left: 0;
+        position: absolute;
+        top: 0;
+        width: 100%;
+      }
+
+      .letter--apple-iap .letter__container {
+        width: min(100%, 30.5em);
+      }
+
+      .letter--apple-iap .letter__container:before {
+        height: 98.9%;
+        transform: rotate(-0.4deg) translate(0.6%, 0.5%);
+        width: 97.7%;
+      }
+
+      .letter--apple-iap .letter__container:after {
+        height: 99.6%;
+        transform: rotate(0.55deg) translate(2.1%, 0.2%);
+        width: 95.1%;
+      }
+
+      .letter--apple-path .letter__container {
+        width: min(100%, 28.5em);
+      }
+
+      .letter--apple-path .letter__container:before {
+        height: 98.7%;
+        transform: rotate(-0.5deg) translate(0.6%, 0.7%);
+        width: 98.1%;
+      }
+
+      .letter--apple-path .letter__container:after {
+        height: 99.6%;
+        transform: rotate(0.75deg) translate(1.3%, 0.2%);
+        width: 97.5%;
+      }
+
+      .letter--everyone .letter__container {
+        width: min(100%, 25.5em);
+      }
+
+      .letter--everyone .letter__container:before {
+        transform: rotate(-1.45deg) translate(0.2%, 0.1%);
+        width: 99.1%;
+      }
+
+      .letter--everyone .letter__container:after {
+        height: 98.5%;
+        transform: rotate(0.3deg) translate(0.3%, 0.8%);
+        width: 99.3%;
+      }
+
+      .letter--everyone .letter__container article {
+        transform: rotate(-0.4deg);
+      }
+
+      @media (min-width: 64em) {
+        .letter {
+          padding-left: 2em;
+          padding-right: 2em;
+        }
+
+        .letter__container article {
+          padding: 3.75em 4em;
+        }
+
+        .letter__container article ol {
+          padding-left: 0;
+        }
+
+        .letter--apple-iap .letter__container:before {
+          transform: rotate(-1.5deg) translate(0.6%, 0.5%);
+        }
+
+        .letter--apple-iap .letter__container:after {
+          transform: rotate(0.4deg) translate(2.1%, 0.2%);
+        }
+
+        .letter--apple-iap .letter__container article {
+          transform: rotate(-0.7deg);
+        }
+
+        .letter--apple-path .letter__container:before {
+          transform: rotate(-1.8deg) translate(0.6%, 0.5%);
+        }
+
+        .letter--apple-path .letter__container:after {
+          transform: rotate(0.7deg) translate(1.3%, 0);
+        }
+
+        .letter--apple-path .letter__container article {
+          transform: rotate(-0.8deg);
+        }
+
+        .letter--everyone .letter__container:before {
+          transform: rotate(-2.9deg) translate(0.2%, 0.1%);
+        }
+
+        .letter--everyone .letter__container:after {
+          transform: rotate(0.6deg) translate(0.3%, 0.8%);
+        }
+
+        .letter--everyone .letter__container article {
+          transform: rotate(-0.8deg);
+        }
+      }
+    </style>
     <title>Vanlife Cameras</title>
   </head>
-  <body class="bg-emerald-200 py-8">
-    <div class="">
-      <iframe 
-        class="rounded-lg bg-white mx-auto" 
-        src="https://docs.google.com/forms/d/e/1FAIpQLSeqLZcGhcd63k2e9o5mJBk88NmWFo1-uxcpOZGaAx-4A-G1Dg/viewform?embedded=true" 
-        width="640" 
-        height="1379" 
-        frameborder="0" 
-        marginheight="0" 
-        marginwidth="0">
-          Loading...
-      </iframe>
+  <body class="bg-emerald-200">
+    <div class="py-8">
+      <div class="w-[640px] mx-auto pb-8 text-center">
+        <div class="text-[72px] px-4" style="line-height: 60px">
+          cameras for <span class="text-amber-700">#vanlife</span>
+        </div>
+        <hr class="h-px my-8 bg-green-700 border-0 dark:bg-green-200" />
+
+        <div
+          class="letter letter--everyone space-bottom--xx-large space-top--large"
+        >
+          <div class="letter__container">
+            <article>
+              <p>Howdy fellow #vanlife travelers!</p>
+              <p>
+                We don't think any current security camera systems meet the
+                unique needs of #vanlife'ers.
+              </p>
+              <p>
+                So, we're building the one we want, and with your input,
+                hopefully a system you'll want to use as well!
+              </p>
+              <p>We care about having cameras that:</p>
+              <ul class="list-disc list-inside !mt-0 !mb-0">
+                <li>cover all around our van</li>
+                <li>work during day/night</li>
+                <li>
+                  are instantly viewable (all cameras at once!) on our
+                  phones/tablets
+                </li>
+                <li>
+                  can record to local/remote sources (SD Card, Cloud) for
+                  monitoring/alerting
+                </li>
+              </ul>
+              <p>
+                <a
+                  href="https://forms.gle/4KSmw8VBjZxyuCMM9"
+                  class="link link-info"
+                  >Tell us what you'd like!</a
+                >
+              </p>
+              <p>- Nick and Leah</p>
+            </article>
+          </div>
+        </div>
+      </div>
     </div>
   </body>
 </html>
