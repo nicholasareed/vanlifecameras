@@ -1,290 +1,212 @@
-<html lang="en-US">
+<!DOCTYPE html>
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-      href="https://cdn.jsdelivr.net/npm/daisyui@4.12.10/dist/full.min.css"
-      rel="stylesheet"
-      type="text/css"
-    />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Vamera - Security for Vanlife</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-      @import url("https://fonts.googleapis.com/css2?family=Vollkorn:ital,wght@0,400..900;1,400..900&display=swap");
-    </style>
-    <style>
-      .font-vollkorn {
-        font-family: "Vollkorn", serif;
-        font-optical-sizing: auto;
-        font-weight: <weight>;
-        font-style: normal;
-      }
-
-      .letter {
-        display: flex;
-        flex-direction: column;
-        padding-left: 1em;
-        padding-right: 1em;
-        position: relative;
-        z-index: 1;
-      }
-
-      .letter__container {
-        display: flex;
-        flex-direction: column;
-        margin-inline: auto;
-        position: relative;
-        width: min(100%, 30em);
-      }
-
-      .letter__container article {
-        background: white;
-        border-radius: 0.1em;
-        box-shadow: 0 0 0 1px rgba(35, 28, 51, 0.02),
-          0 0.2em 1.6em -0.8em rgba(35, 28, 51, 0.1),
-          0 0.4em 2.4em -1.2em rgba(35, 28, 51, 0.2),
-          0 0.4em 0.8em -1.2em rgba(35, 28, 51, 0.3),
-          0 0.8em 1.2em -1.6em rgba(35, 28, 51, 0.4),
-          0 1.2em 1.6em -2em rgba(35, 28, 51, 0.5);
-        display: flex;
-        flex-direction: column;
-        font-size: 18px;
-        letter-spacing: -0.0125em;
-        line-height: 1.45;
-        position: relative;
-        padding: 1.75em 2em;
-        text-align: left;
-        z-index: 1;
-      }
-
-      .letter__container article > * + * {
-        margin-top: 1.4em;
-      }
-
-      .letter__container article ol {
-        list-style: decimal;
-        padding-left: 1.1em;
-      }
-
-      .letter__container article ol li + li {
-        margin-top: 0.725em;
-      }
-
-      .letter__signature {
-        --spacing: 2.2em;
-        align-items: center;
-        background: url(/assets/images/general/jf-signature.svg) left top/auto
-          3.3em no-repeat;
-        display: flex;
-        /* font-size: var(--font-size-small); */
-        gap: 0.5em;
-        letter-spacing: -0.0125em;
-        line-height: 1.4em;
-        padding-top: 4.3em;
-        position: relative;
-        width: 100%;
-      }
-
-      .letter__signature dl {
-        display: flex;
-        flex-direction: column;
-      }
-
-      .letter__signature dl dt {
-        font-weight: 500;
-      }
-
-      .letter__signature dl dd {
-        font-style: italic;
-      }
-
-      .letter__signature--avatar:before {
-        background: url(/assets/images/general/jf-avatar.jpg) center
-          center/cover no-repeat;
-        border-radius: 100%;
-        content: "";
-        display: inline-flex;
-        height: 3em;
-        width: 3em;
-      }
-
-      .letter--apple-iap .letter__container:before,
-      .letter--apple-iap .letter__container:after,
-      .letter--apple-path .letter__container:before,
-      .letter--apple-path .letter__container:after,
-      .letter--everyone .letter__container:before,
-      .letter--everyone .letter__container:after {
-        background: white;
-        border-radius: 0.1em;
-        box-shadow: 0 0 0 1px rgba(35, 28, 51, 0.02),
-          0 0.4em 2.4em -1.2em rgba(35, 28, 51, 0.05),
-          0 1.6em 2em -2.4em rgba(35, 28, 51, 0.05);
-        content: "";
-        height: 100%;
-        left: 0;
-        position: absolute;
-        top: 0;
-        width: 100%;
-      }
-
-      .letter--apple-iap .letter__container {
-        width: min(100%, 30.5em);
-      }
-
-      .letter--apple-iap .letter__container:before {
-        height: 98.9%;
-        transform: rotate(-0.4deg) translate(0.6%, 0.5%);
-        width: 97.7%;
-      }
-
-      .letter--apple-iap .letter__container:after {
-        height: 99.6%;
-        transform: rotate(0.55deg) translate(2.1%, 0.2%);
-        width: 95.1%;
-      }
-
-      .letter--apple-path .letter__container {
-        width: min(100%, 28.5em);
-      }
-
-      .letter--apple-path .letter__container:before {
-        height: 98.7%;
-        transform: rotate(-0.5deg) translate(0.6%, 0.7%);
-        width: 98.1%;
-      }
-
-      .letter--apple-path .letter__container:after {
-        height: 99.6%;
-        transform: rotate(0.75deg) translate(1.3%, 0.2%);
-        width: 97.5%;
-      }
-
-      .letter--everyone .letter__container {
-        width: min(100%, 35.5em);
-      }
-
-      .letter--everyone .letter__container:before {
-        transform: rotate(-1.45deg) translate(0.2%, 0.1%);
-        width: 99.1%;
-      }
-
-      .letter--everyone .letter__container:after {
-        height: 98.5%;
-        transform: rotate(0.3deg) translate(0.3%, 0.8%);
-        width: 99.3%;
-      }
-
-      .letter--everyone .letter__container article {
-        transform: rotate(-0.4deg);
-      }
-
-      @media (min-width: 64em) {
-        .letter {
-          padding-left: 2em;
-          padding-right: 2em;
-        }
-
-        .letter__container article {
-          padding: 3.75em 4em;
-        }
-
-        .letter__container article ol {
-          padding-left: 0;
-        }
-
-        .letter--apple-iap .letter__container:before {
-          transform: rotate(-1.5deg) translate(0.6%, 0.5%);
-        }
-
-        .letter--apple-iap .letter__container:after {
-          transform: rotate(0.4deg) translate(2.1%, 0.2%);
-        }
-
-        .letter--apple-iap .letter__container article {
-          transform: rotate(-0.7deg);
-        }
-
-        .letter--apple-path .letter__container:before {
-          transform: rotate(-1.8deg) translate(0.6%, 0.5%);
-        }
-
-        .letter--apple-path .letter__container:after {
-          transform: rotate(0.7deg) translate(1.3%, 0);
-        }
-
-        .letter--apple-path .letter__container article {
-          transform: rotate(-0.8deg);
-        }
-
-        .letter--everyone .letter__container:before {
-          transform: rotate(-2.9deg) translate(0.2%, 0.1%);
-        }
-
-        .letter--everyone .letter__container:after {
-          transform: rotate(0.6deg) translate(0.3%, 0.8%);
-        }
-
-        .letter--everyone .letter__container article {
-          transform: rotate(-0.8deg);
-        }
-      }
-    </style>
-    <title>Vanlife Cameras</title>
   </head>
-  <body class="bg-emerald-200">
-    <div class="py-8">
-      <div class="w-full md:w-[640px] mx-auto pb-8 text-center">
-        <div class="text-[72px] px-4 pb-4" style="line-height: 60px">
-          📹 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 🚐
-        </div>
-
-        <div class="px-4 headline">
-          <svg viewBox="0 0 156 18">
-            <text x="0" y="15" class="fill-black">Cameras</text>
-            <text x="72" y="15" class="fill-emerald-800/50">for</text>
-            <text x="100" y="15" class="fill-amber-700">#vanlife</text>
-          </svg>
-        </div>
-        <hr class="h-px my-8 bg-green-700 border-0 dark:bg-green-200" />
-
-        <div
-          class="letter letter--everyone space-bottom--xx-large space-top--large"
+  <body class="bg-gray-100 text-gray-900">
+    <!-- Hero Section -->
+    <section
+      class="relative bg-cover bg-center h-screen text-white"
+      style="background-image: url('./pexels-fotios-photos-1187677.jpg')"
+    >
+      <!-- <section
+      class="relative bg-cover bg-center h-screen text-white"
+      style="background-image: url('./pexels-hsm0815-2689649.jpg')"
+    > -->
+      >
+      <div class="absolute inset-0 bg-black bg-opacity-50"></div>
+      <div
+        class="relative z-10 flex flex-col items-center justify-center h-full px-4 text-center"
+      >
+        <h1 class="text-4xl font-bold md:text-5xl">
+          Sleep Soundly, Travel Freely
+        </h1>
+        <p class="mt-4 text-xl md:text-2xl">
+          Security cameras designed for #vanlife
+        </p>
+        <a
+          href="https://forms.gle/4KSmw8VBjZxyuCMM9"
+          class="mt-6 bg-teal-500 text-white py-3 px-6 rounded-full text-lg font-semibold hover:bg-teal-600 transition"
+          >Join the Waitlist for Exclusive Early Access</a
         >
-          <div class="letter__container">
-            <article>
-              <p>Howdy fellow #vanlife travelers!</p>
-              <p>
-                We don't think any current security camera systems meet the
-                unique needs of #vanlife'ers.
-              </p>
-              <p>
-                So, we're building the one we want, and with your input,
-                hopefully a system you'll want to use as well!
-              </p>
-              <p>We care about having cameras that:</p>
-              <ul class="list-disc list-inside !mt-0 !mb-0">
-                <li>cover all around our van</li>
-                <li>work during day/night</li>
-                <li>
-                  are instantly viewable (all cameras at once!) on our
-                  phones/tablets
-                </li>
-                <li>
-                  can record to local/remote sources (SD Card, Cloud) for
-                  monitoring/alerting
-                </li>
-              </ul>
-              <p>
-                <a
-                  href="https://forms.gle/4KSmw8VBjZxyuCMM9"
-                  class="link link-info"
-                  >Tell us what you'd like!</a
-                >
-              </p>
-              <p>- Nick and Leah</p>
-            </article>
+      </div>
+    </section>
+
+    <!-- Product Features Section -->
+    <section class="py-16 bg-gray-50">
+      <div class="container mx-auto px-4">
+        <h2 class="text-3xl font-bold text-center mb-8">
+          Designed for Vanlife, Built for Peace of Mind
+        </h2>
+        <div class="grid md:grid-cols-3 gap-8 text-center">
+          <div class="p-6 bg-white shadow-lg rounded-lg">
+            <h3 class="text-xl font-semibold mb-4">
+              Wireless & Stealthy Design
+            </h3>
+            <p class="text-gray-700">No holes, easy install/takedown.</p>
+          </div>
+          <div class="p-6 bg-white shadow-lg rounded-lg">
+            <h3 class="text-xl font-semibold mb-4">160° Wide Angle Camera</h3>
+            <p class="text-gray-700">
+              Wider angle than traditional systems (160° vs. 110°).
+            </p>
+          </div>
+          <div class="p-6 bg-white shadow-lg rounded-lg">
+            <h3 class="text-xl font-semibold mb-4">Full HD 1080p Resolution</h3>
+            <p class="text-gray-700">Crystal clear live and recorded video.</p>
+          </div>
+          <div class="p-6 bg-white shadow-lg rounded-lg">
+            <h3 class="text-xl font-semibold mb-4">Night Vision with IR LED</h3>
+            <p class="text-gray-700">
+              High-power infrared LEDs for night viewing.
+            </p>
+          </div>
+          <div class="p-6 bg-white shadow-lg rounded-lg">
+            <h3 class="text-xl font-semibold mb-4">
+              Motion Detection with Masking
+            </h3>
+            <p class="text-gray-700">
+              Accurate detection with custom masking zones.
+            </p>
+          </div>
+          <div class="p-6 bg-white shadow-lg rounded-lg">
+            <h3 class="text-xl font-semibold mb-4">
+              Weatherproof & Built for Vans
+            </h3>
+            <p class="text-gray-700">
+              Durable and designed to handle the elements.
+            </p>
+          </div>
+        </div>
+        <!-- <div class="text-center mt-8">
+          <a
+            href="https://forms.gle/4KSmw8VBjZxyuCMM9"
+            class="bg-teal-500 text-white py-3 px-6 rounded-full text-lg font-semibold hover:bg-teal-600 transition"
+            >Join the Vamera Waitlist Now</a
+          >
+        </div> -->
+      </div>
+    </section>
+
+    <!-- Background Section with Text Overlays on the Right -->
+    <section
+      class="relative bg-cover bg-center h-screen"
+      style="
+        background-image: url('./pexels-kuku-campers-593102524-17444987.jpg');
+      "
+    >
+      <!-- <section
+      class="relative bg-cover bg-center h-screen"
+      style="background-image: url('./pexels-laukevtravel-11816711.jpg')"
+    > -->
+      <!-- Overlay -->
+      <!-- <div class="absolute inset-0 bg-black bg-opacity-50"></div> -->
+
+      <!-- Content -->
+      <div class="relative z-10 flex items-center h-full px-6 lg:px-12">
+        <div
+          class="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-7xl mx-auto text-white"
+        >
+          <!-- Block 1: Sleep Soundly Inside Your Van -->
+          <div class="p-8 bg-black bg-opacity-70 rounded-lg shadow-lg">
+            <h3 class="text-3xl font-bold">Sleep Soundly Inside Your Van</h3>
+            <p class="mt-2 text-lg">
+              Check outside instantly from the comfort of your bed and feel at
+              peace throughout the night.
+            </p>
+          </div>
+
+          <!-- Block 2: Protect Your Van While You're Away -->
+          <div class="p-8 bg-black bg-opacity-70 rounded-lg shadow-lg">
+            <h3 class="text-3xl font-bold">
+              Protect Your Van While You're Away
+            </h3>
+            <p class="mt-2 text-lg">
+              Monitor your van remotely and get alerts when anything happens
+              while you're out exploring.
+            </p>
           </div>
         </div>
       </div>
-    </div>
+    </section>
+
+    <!-- Use Cases Section -->
+    <!-- <section class="py-16 bg-white">
+      <div class="container mx-auto px-4">
+        <h2 class="text-3xl font-bold text-center mb-8">
+          Safety for the Adventurous Life
+        </h2>
+        <div class="grid md:grid-cols-2 gap-8">
+          
+          <div class="flex flex-col items-center">
+            <img
+              src="./pexels-erik-schereder-3173655-5675750.jpg"
+              alt="View from inside van"
+              class="mb-4"
+            />
+            <h3 class="text-xl font-semibold">Sleep Soundly Inside Your Van</h3>
+            <p class="text-center text-gray-700 mt-2">
+              Check outside instantly from the comfort of your bed.
+            </p>
+          </div>
+          
+          <div class="flex flex-col items-center">
+            <img
+              src="https://your-image-url.com"
+              alt="Monitor your van"
+              class="mb-4"
+            />
+            <h3 class="text-xl font-semibold">
+              Protect Your Van While You're Away
+            </h3>
+            <p class="text-center text-gray-700 mt-2">
+              Get alerts and footage, no matter how far you roam.
+            </p>
+          </div>
+        </div>
+        <div class="text-center mt-8">
+          <a
+            href="https://forms.gle/4KSmw8VBjZxyuCMM9"
+            class="bg-teal-500 text-white py-3 px-6 rounded-full text-lg font-semibold hover:bg-teal-600 transition"
+            >Get Vamera First—Join the Waitlist</a
+          >
+        </div>
+      </div>
+    </section> -->
+
+    <!-- Call to Action Section -->
+    <section id="waitlist" class="py-16 bg-teal-600 text-white text-center">
+      <div class="container mx-auto px-4">
+        <h2 class="text-3xl font-bold mb-4">
+          Total peace of mind, inside or away from your van.
+        </h2>
+        <p class="text-xl mb-6">
+          Designed and Built for the challenges and thrills of Vanlife
+        </p>
+        <a
+          href="https://forms.gle/4KSmw8VBjZxyuCMM9"
+          class="bg-white text-teal-600 py-3 px-6 rounded-full text-lg font-semibold hover:bg-gray-200 transition"
+          >Get Early Access</a
+        >
+      </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer class="bg-gray-800 text-gray-400 py-8">
+      <div class="container mx-auto px-4 text-center">
+        <p class="mb-4">&copy; 2024 Vamera - All Rights Reserved</p>
+        <!-- <div class="flex justify-center space-x-4">
+          <a href="#" class="hover:text-white">About</a>
+          <a href="#" class="hover:text-white">Contact Us</a>
+          <a href="#" class="hover:text-white">Privacy Policy</a>
+        </div> -->
+      </div>
+    </footer>
   </body>
 </html>
+
+
